@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Bright industrial palette ---- */
+  --color-paper: #eef3f8;
+  --color-surface: #ffffff;
+  --color-ink: #0d1c2e;
+  --color-ink-soft: #43566e;
+  --color-ink-faint: #7488a0;
+  --color-edge: #d8e2ee;
+
+  --color-brand-50: #eef5ff;
+  --color-brand-100: #d9e9ff;
+  --color-brand-200: #b3d3ff;
+  --color-brand-300: #82b4fb;
+  --color-brand-400: #4d90f5;
+  --color-brand-500: #2673ec;
+  --color-brand-600: #135fd8;
+  --color-brand-700: #0f4bb0;
+  --color-brand-800: #123f8d;
+  --color-brand-900: #13376f;
+
+  --color-volt-50: #ecfdf3;
+  --color-volt-100: #d1fadf;
+  --color-volt-200: #a6f4c5;
+  --color-volt-300: #6ce9a6;
+  --color-volt-400: #32d583;
+  --color-volt-500: #12b76a;
+  --color-volt-600: #039855;
+  --color-volt-700: #027a48;
+  --color-volt-800: #05603a;
+
+  --color-safety-50: #fff6ec;
+  --color-safety-100: #ffe9ce;
+  --color-safety-200: #ffd09c;
+  --color-safety-300: #ffb165;
+  --color-safety-400: #ff8f2f;
+  --color-safety-500: #f97516;
+  --color-safety-600: #e05f0d;
+  --color-safety-700: #b64a0c;
+  --color-safety-800: #933c11;
+
+  --color-alert-500: #e6494d;
+  --color-alert-600: #cf3438;
+  --color-alert-50: #fef2f2;
+
+  --font-sans: var(--font-heebo), "Segoe UI", system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(13 28 46 / 0.06), 0 8px 24px -12px rgb(13 28 46 / 0.14);
+  --shadow-pop: 0 4px 10px rgb(13 28 46 / 0.08), 0 20px 50px -16px rgb(19 95 216 / 0.25);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-timer-glow: timer-glow 2.2s ease-in-out infinite;
+  --animate-pause-blink: pause-blink 1.4s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-slide-in: slide-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop-in: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-shimmer: shimmer 2.8s linear infinite;
+  --animate-progress-sweep: progress-sweep 3.2s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes timer-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(18 183 106 / 0.45), 0 0 42px -8px rgb(18 183 106 / 0.55); }
+    50% { box-shadow: 0 0 0 6px rgb(18 183 106 / 0.12), 0 0 64px -4px rgb(18 183 106 / 0.75); }
+  }
+  @keyframes pause-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateY(26px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes pop-in {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+  @keyframes progress-sweep {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-220%); }
+  }
+}
+
+/* RTL marquees run visually mirrored; keep keyframes LTR-safe above. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(1100px 500px at 85% -8%, rgb(38 115 236 / 0.10), transparent 60%),
+    radial-gradient(900px 480px at 8% 108%, rgb(18 183 106 / 0.08), transparent 55%),
+    var(--color-paper);
+  min-height: 100dvh;
+}
+
+/* Western-digits tabular numerals everywhere numbers appear */
+.num,
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.digits {
+  font-family: var(--font-num), "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+  unicode-bidi: isolate;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgb(38 115 236 / 0.22);
+}
+
+/* Industrial scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: #b9c9db;
+  border-radius: 8px;
+  border: 2px solid var(--color-paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8fa6c0;
+}
+
+/* Subtle blueprint grid texture for the TV backdrop */
+.blueprint-bg {
+  background-color: #f7fafd;
+  background-image:
+    linear-gradient(rgb(19 95 216 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(19 95 216 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Big touch targets for shop-floor tablets */
+.touch-lg {
+  min-height: 3.25rem;
+}
